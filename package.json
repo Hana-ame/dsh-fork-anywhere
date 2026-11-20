@@ -1,0 +1,26 @@
+{
+  "name": "dsh-fork-anywhere",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "在任意历史回合处分叉（分叉到该回合结束处）：每个已完成回合的尾部加一个「分叉」按钮，不受 DSH 原生分叉按钮“对话最后一条才可用”的限制。原会话不变，新分支独立。",
+  "keywords": ["dsh-plugin", "deepseek-harness", "fork", "branch", "session"],
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-api-session-controller",
+        "@deepseek-ai/dsh-client-ui-workspace"
+      ]
+    }
+  }
+}
